@@ -86,7 +86,8 @@ try {
                         foreach ($vendor_codes as $vendor_code) {
                             echo "<option value='{$vendor_code}'>{$vendor_code}</option>";
                         }
-                        ?>                    </select>
+                        ?>                    
+                    </select>
                 </div>
                 <button type="submit" class="submit-btn" name="submit" value="create">登録</button>
             </form>
