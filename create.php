@@ -22,7 +22,11 @@ if (isset($_POST['submit'])) {
 
     $stmt_insert->execute();
 
-    header("Location: read.php");
+    $count = $stmt_insert->rowCount();
+
+    $message = "商品を{$count}件登録しました。";
+
+    header("Location: read.php?message={$message}");
     } catch (PDOException $e) {
         exit($e->getMessage());
     }

@@ -150,7 +150,9 @@ footer {
     vertical-align: top;
 }
 
-feature
+.success {
+    color: #A0DD85;
+}
 /* create.php */
 .registration {
     box-sizing: border-box;
@@ -208,3 +210,4 @@ feature
     border-radius: 4px;
     box-shadow: 1px 2px 4px rgb(0 0 0 / 15%);
 }
+

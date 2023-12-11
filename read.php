@@ -58,6 +58,11 @@ try {
     <main>
         <article class="products">
             <h1>商品一覧</h1>
+            <?php
+            if (isset($_GET['message'])) {
+                echo "<p class='success'>{$_GET['message']}</p>";
+            }
+            ?>
             <div class="products-ui">
                 <div>
                     <a href="read.php?order=desc&keyword=<?= $keyword ?>">
