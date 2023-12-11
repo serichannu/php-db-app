@@ -86,6 +86,7 @@ try {
                     <th>在庫数</th>
                     <th>仕入先コード</th>
                     <th>編集</th>
+                    <th>削除</th>
                 </tr>
                 <?php
                 foreach ($products as $product) {
@@ -96,7 +97,8 @@ try {
                     <td>{$product['price']}</td>
                     <td>{$product['stock_quanity']}</td>
                     <td>{$product['vendor_code']}</td>
-                    <td><a href='update.php?id={$product['id']}'><img src='images/edit.png' alt='編集' class='edit-icon'></a></td>
+                    <td><a href='update.php?id={$product['id']}'><img src='images/edit.png' alt='編集' class='icon'></a></td>
+                    <td><a href='delete.php?id={$product['id']}'><img src='images/delete.png' alt='削除' class='icon'></a></td>
                     </tr>
                     ";
                     echo $table_row;
