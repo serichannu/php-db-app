@@ -55,7 +55,7 @@ try {
                         <img src="images/asc.png" alt="昇順に並べ替え" class="sort-img">
                     </a>
                 </div>
-                <a href="#" class="btn">商品登録</a>
+                <a href="create.php" class="btn">商品登録</a>
             </div>
             <table class="products-table">
                 <tr>
