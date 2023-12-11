@@ -3,6 +3,31 @@ $dsn = 'mysql:dbname=php_db_app;host=localhost;charset=utf8mb4';
 $user = 'root';
 $password = '';
 
+if (isset($_POST['submit'])) {
+    try {
+        $pdo =new PDO($dsn, $user, $password);
+
+        $sql_insert = '
+        INSERT INTO products (product_code, product_name, price, stock_quanity, vendor_code)
+        VALUES (:product_code, :product_name, :price, :stock_quantity, :vendor_code)
+        ';
+    
+    $stmt_insert = $pdo->prepare($sql_insert);
+
+    $stmt_insert->bindValue(':product_code', $_POST['product_code'], PDO::PARAM_INT);
+    $stmt_insert->bindValue(':product_name', $_POST['product_name'], PDO::PARAM_STR);
+    $stmt_insert->bindValue(':price', $_POST['price'], PDO::PARAM_INT);
+    $stmt_insert->bindValue(':stock_quantity', $_POST['stock_quantity'], PDO::PARAM_INT);
+    $stmt_insert->bindValue(':vendor_code', $_POST['vendor_code'], PDO::PARAM_INT);
+
+    $stmt_insert->execute();
+
+    header("Location: read.php");
+    } catch (PDOException $e) {
+        exit($e->getMessage());
+    }
+}
+
 try {
     $pdo = new PDO($dsn, $user, $password);
 
@@ -53,15 +78,15 @@ try {
                     <label for="stock_quantity">在庫数</label>
                     <input type="number" name="stock_quantity" min="0" max="100000000" required>
 
-                    <label for="vendor_code">仕入れ先コード</label>
+                    <label for="vendor_code">仕入先コード</label>
                     <select name="vendor_code" required>
                         <option disabled selected value>選択してください</option>
                         <?php
-                        foreach ($vendor_code as $vendor_code) {
+                        // 配列の中身を順番に取り出し、セレクトボックスの選択肢として出力する
+                        foreach ($vendor_codes as $vendor_code) {
                             echo "<option value='{$vendor_code}'>{$vendor_code}</option>";
                         }
-                        ?>
-                    </select>
+                        ?>                    </select>
                 </div>
                 <button type="submit" class="submit-btn" name="submit" value="create">登録</button>
             </form>
